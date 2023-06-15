@@ -1,18 +1,8 @@
-def get_excessive_letter(shorter: str, longer: str) -> str:
-    data = {}
-    for char in shorter:
-        if char in data:
-            data[char] += 1
-        else:
-            data[char] = 1
-
-    for char in longer:
-        if char in data:
-            data[char] -= 1
-    for char, count in data.items():
-        if count != 0:
-            return char
+def sum_of_minimums(numbers):
+    min_sum = 0
+    for row in numbers:
+        min_sum += min(row)
+    return min_sum
 
 
-
-print(get_excessive_letter('go', 'ogg'))
+print(sum_of_minimums([ [ 7,9,8,6,2 ], [6,3,5,4,3], [5,8,7,4,5] ]))
