@@ -1,6 +1,5 @@
 def check_parity(a: int, b: int, c: int) -> bool:
-    if (a % 2 == 0 and b % 2 == 0 and c % 2 == 0) or (
-        a % 2 == 1 and b % 2 == 1 and c % 2 == 1):
+    if (a % 2 == b % 2 == c % 2 == 0) or (a % 2 == b % 2 == c % 2 == 1):
         return True
     return False
 

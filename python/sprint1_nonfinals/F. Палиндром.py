@@ -1,6 +1,6 @@
 def is_palindrome(line: str) -> bool:
-    import re
-    line = re.sub('[:!@#$\n-.,]', '', line)
-    return line.lower() == line[::-1].lower()
+    new_line = ''.join(x.lower() for x in line if x.isalpha())
+    return new_line == new_line[::-1]
+
 
 print(is_palindrome(input().strip()))
