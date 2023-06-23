@@ -1,8 +1,8 @@
-def sum_of_minimums(numbers):
-    min_sum = 0
-    for row in numbers:
-        min_sum += min(row)
-    return min_sum
 
+lst = [7, 9, 8, 6, 2]
 
-print(sum_of_minimums([ [ 7,9,8,6,2 ], [6,3,5,4,3], [5,8,7,4,5] ]))
+for i, x in enumerate(lst):
+    lst[i] += 1
+
+for x in lst:
+    print(x)

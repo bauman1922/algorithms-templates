@@ -4,16 +4,26 @@
 LOCAL = True
 
 if LOCAL:
-    class DoubleConnectedNode:  
-        def __init__(self, value, next=None, prev=None):  
-            self.value = value  
-            self.next = next  
+    class DoubleConnectedNode:
+        def __init__(self, value, next=None, prev=None):
+            self.value = value
+            self.next = next
             self.prev = prev
 
+
 def solution(node):
-    # Your code
-    # ヽ(´▽`)/
-    pass
+    left = node
+    right = left.next
+    left.next = None
+    left.prev = right
+    while right is not None:
+        right.prev = right.next
+        right.next = left
+        left = right
+        right = right.prev
+    node = left
+    return node
+
 
 def test():
     node3 = DoubleConnectedNode("node3")

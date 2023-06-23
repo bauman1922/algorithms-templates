@@ -11,9 +11,19 @@ if LOCAL:
 
 
 def solution(node, idx):
-    # Your code
-    # ヽ(´▽`)/
-    pass
+    def get_node_by_index(node, index):
+        while index:
+            node = node.next_item
+            index -= 1
+        return node
+    if idx == 0:
+        node = node.next_item
+    else:
+        previous_node = get_node_by_index(node, idx - 1)
+        next_node = get_node_by_index(node, idx + 1)
+        previous_node.next_item = next_node
+
+    return node
 
 
 def test():
@@ -27,6 +37,7 @@ def test():
     assert new_head.next_item.next_item is node3
     assert new_head.next_item.next_item.next_item is None
     # result is node0 -> node2 -> node3
+    print("Тесты пройдены!")
 
 
 if __name__ == '__main__':
