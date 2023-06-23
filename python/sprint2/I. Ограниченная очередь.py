@@ -15,7 +15,7 @@ class MyQueueSized:
             self.tail = (self.tail + 1) % self.max_n
             self.size += 1
         else:
-            return "error"
+            return 'error'
 
     def pop(self):
         if self.is_empty():
