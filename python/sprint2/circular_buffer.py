@@ -1,15 +1,5 @@
-# ID: 88559735
-class OverflowError(Exception):
-    """Исключение, возникающее при переполнении дека."""
-    pass
-
-
-class IndexError(Exception):
-    """Исключение, возникающее при доступе к пустому деку."""
-    pass
-
-
-class Deck:
+# ID: 88594638
+class BoundedDeque:
     """Класс двусторонней очереди."""
     def __init__(self, max_size):
         self.elements = [None] * max_size
@@ -18,24 +8,24 @@ class Deck:
         self.tail = 0
         self.size = 0
 
-    def is_empty(self):
-        return self.size == 0
+    def reached_empty_size(self):
+        if self.size == 0:
+            raise IndexError("Дек пустой!")
 
-    def is_full(self):
-        return self.size == self.max_size
+    def reached_max_size(self):
+        if self.size == self.max_size:
+            raise IndexError("Дек заполнен!")
 
     def push_back(self, value):
         """Добавляет значение в конец очереди."""
-        if self.is_full():
-            raise OverflowError("Дек заполнен. Невозможно добавить элемент!")
+        self.reached_max_size()
         self.elements[self.tail] = value
         self.tail = (self.tail + 1) % self.max_size
         self.size += 1
 
     def pop_back(self):
         """Удаляет значение из конца очереди и возвращает его."""
-        if self.is_empty():
-            raise IndexError("Дек пустой. Невозможно удалить элемент.")
+        self.reached_empty_size()
         self.tail = (self.tail - 1) % self.max_size
         value = self.elements[self.tail]
         self.size -= 1
@@ -43,16 +33,14 @@ class Deck:
 
     def push_front(self, value):
         """Добавляет значение в начало очереди."""
-        if self.is_full():
-            raise OverflowError("Дек заполнен. Невозможно добавить элемент!")
+        self.reached_max_size()
         self.head = (self.head - 1) % self.max_size
         self.elements[self.head] = value
         self.size += 1
 
     def pop_front(self):
         """Удаляет значение из начала очереди и возвращает его."""
-        if self.is_empty():
-            raise IndexError("Дек пустой. Невозможно удалить элемент.")
+        self.reached_empty_size()
         value = self.elements[self.head]
         self.head = (self.head + 1) % self.max_size
         self.size -= 1
@@ -62,19 +50,16 @@ class Deck:
 if __name__ == "__main__":
     count_command = int(input())
     answers = []
-    deck = Deck(int(input()))
+    deque = BoundedDeque(int(input()))
     for _ in range(count_command):
-        cmd, *prms = input().split()
+        command, *parameters = input().split()
         try:
-            method = getattr(deck, cmd)
-            result = method(*prms)
+            result = getattr(deque, command)(*parameters)
             if result is not None:
                 answers.append(result)
-        except OverflowError:
-            answers.append("error")
         except IndexError:
             answers.append("error")
         except AttributeError:
-            print("Некорректная команда ввода!")
+            raise ValueError(f"Некорректная команда ввода: {command}")
 
     print(*answers, sep='\n')
