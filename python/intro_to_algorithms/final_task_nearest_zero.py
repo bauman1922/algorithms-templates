@@ -45,7 +45,7 @@ if __name__ == '__main__':
 
 
 
-
+# Второй вариант решения задча
 def calculate(numbers: List[int], length: int) -> List[int]:
     distance = []
     zero_position = None
@@ -60,7 +60,6 @@ def calculate(numbers: List[int], length: int) -> List[int]:
             distance.append(length)
     return distance
 
-# Второй вариант решения задча
 def nearest_zero(length: int, number_street: List[int]) -> List[int]:
     distance = calculate(number_street, length)
     r_distance = (calculate(number_street[::-1], length))[::-1]
