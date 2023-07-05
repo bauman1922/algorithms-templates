@@ -45,20 +45,20 @@ print(" ".join(map(str, result)))
 
 
 
-from typing import List
+# from typing import List
 
-# ДОЛГОЕ ВРЕМЯ ИСПОЛНЕНИЯ КОДА
-def factorize(number: int) -> List[int]:
-    lst = []
-    chislo = 2
-    while number > 1:
-        if number % chislo == 0:
-            lst.append(chislo)
-            number = number / chislo
-        else:
-            chislo += 1
-    return lst
+# # # ДОЛГОЕ ВРЕМЯ ИСПОЛНЕНИЯ КОДА
+# # def factorize(number: int) -> List[int]:
+# #     lst = []
+# #     chislo = 2
+# #     while number > 1:
+# #         if number % chislo == 0:
+# #             lst.append(chislo)
+# #             number = number / chislo
+# #         else:
+# #             chislo += 1
+# #     return lst
 
 
-result = factorize(int(input()))
-print(" ".join(map(str, result)))
+# # result = factorize(int(input()))
+# # print(" ".join(map(str, result)))
