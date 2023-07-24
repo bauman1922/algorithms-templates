@@ -51,5 +51,4 @@ if __name__ == "__main__":
     nums = [p for p in participants]
     quicksort(nums, 0, len(nums) - 1)
 
-    for participant in nums:
-        print(participant.login)
+    print('\n'.join([participant.login for participant in nums]))
