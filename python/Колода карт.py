@@ -39,13 +39,14 @@ class Deck:
     def create_deck(self):
         return [Card(rank, suit) for suit in Card.suits for rank in Card.ranks]
 
-    def _str__(self):
-        return f"{self.cards}"
+    def __str__(self):
+        return ''.join(str(card) for card in self.cards)
 
     def get_random_card(self):
         return choice(self.cards)
 
 
 coloda = Deck()
+print(coloda)
 print(coloda.get_random_card())
 
