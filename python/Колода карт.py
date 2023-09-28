@@ -6,7 +6,6 @@
 
 # class FrenchDeck:
 #     ranks = [str(n) for n in range(2, 11)] + list('JQKA')
-#     print(ranks)
 #     suits = 'spades diamonds clubs hearts'.split()
 
 #     def __init__(self):

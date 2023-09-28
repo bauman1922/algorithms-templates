@@ -1,5 +1,5 @@
 # ID: 88093011
-from typing import List
+from typing import List, Tuple
 
 
 def calculate_distances(street: List[int]) -> List[int]:
@@ -78,3 +78,34 @@ def read_input() -> Tuple[int, List[int]]:
 if __name__ == '__main__':
     length, number_street = read_input()
     print(' '.join([str(x) for x in nearest_zero(length, number_street)]))
+
+
+# Третий вариант решения задачи
+def calculate_distances(street: List[int]) -> List[int]:
+    length = len(street)
+    zero_idx = None
+    res = [0] * length
+
+    for idx, value in enumerate(street):
+        if value == 0:
+            if zero_idx is None:
+                res[0: idx] = res[0: idx][::-1]
+            else:
+                node_idx, rem = divmod(zero_idx + idx, 2)
+                res[node_idx + 1: idx] = res[
+                    zero_idx + 1: node_idx + rem][::-1]
+            zero_idx = idx
+        else:
+            if zero_idx is None:
+                res[idx] = idx + 1
+            else:
+                res[idx] = idx - zero_idx
+    return res
+
+
+if __name__ == '__main__':
+    length = int(input())
+    street = [int(x) for x in input().split()]
+
+    distances = calculate_distances(street)
+    print(' '.join(map(str, distances)))
