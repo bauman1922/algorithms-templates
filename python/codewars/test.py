@@ -1,7 +1,11 @@
-def disarium_number(number):
-    str_number = [x for x in str(number)]
-    result = [int(val) ** idx for idx, val in enumerate(str_number, 1)]
-    return "Disarium !!" if number == sum(result) else "Not !!"
+def solve(arr):
+    new_arr = []
+    for x in arr[::-1]:
+        new_arr.append(x)
+        if new_arr.count(x) > 1:
+            new_arr.pop()
+    return new_arr[::-1]
 
 
-print(disarium_number(101))  # 5 ** 1 + 1 ** 2 + 8 **3  = 518
+
+print(solve([3,4,4,3,6,3]))  #[4,6,3]
