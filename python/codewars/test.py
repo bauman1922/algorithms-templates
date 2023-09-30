@@ -1,4 +1,8 @@
-def mango(quantity, price):
-    return (quantity - quantity // 3) * price
+def validate_hello(greetings):
+    word = ['hello', 'ciao', 'salut', 'hallo', 'hola', 'ahoj', 'czesc']
+    for x in greetings.split():
+            
 
-print(mango(5, 3))
+
+
+print(validate_hello('ciao bella!'))

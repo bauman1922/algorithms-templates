@@ -25,4 +25,4 @@ def reverse(lst):
     return empty_list
 
 
-print(reverse([1,None,14,"two"])) #["two",14,None,1])
+print(reverse([1, None, 14, "two"]))  # ["two",14,None,1])
