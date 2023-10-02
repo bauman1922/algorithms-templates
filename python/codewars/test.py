@@ -1,17 +1,17 @@
-n = int(input())
-arr = []
-for i in range(n):
-    num = int(input())
-    arr.append(num)
-target = int(input())
-res = []
-for x in range(0, len(arr)):
-    for y in range(x + 1, len(arr)):
-        if arr[x] * arr[y] == target:
-            res.append(target)
-            break
+def sq_in_rect(lng, wdth):
+    if lng == wdth:
+        return None
+    else:
+        arr = []
+    while lng > 0 and wdth > 0:
+        if lng >= wdth:
+            arr.append(wdth)
+            lng -= wdth
+        elif lng < wdth:
+            arr.append(lng)
+            wdth -= lng
+    return arr
 
-if res:
-    print("ДА")
-else:
-    print("НЕТ")
+
+
+print(sq_in_rect(20, 14))   # [14, 6, 6, 2, 2, 2]

@@ -26,3 +26,10 @@ def digital_root(n):
 
 
 print(digital_root(2)) # 6
+
+
+# def digital_root(n):
+#     return n if n < 10 else digital_root(sum(map(int,str(n))))
+
+# def digital_root(n):
+#     return n if n < 10 else digital_root(sum([int(c) for c in str(n)]))
